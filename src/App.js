@@ -36,21 +36,23 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <div className="content">
-        {loveScore !== null && (
-          <div className="result">
-            <p>The Love Score is: {loveScore}</p>
-          </div>
-        )}
-        <form onSubmit={handleSubmit}>
+    <main className="app">
+      <header>
+        <h1>Love Score Calculator</h1>
+      </header>
+      <section className="content">
+        <form onSubmit={handleSubmit} aria-label="Calculate your love score">
+          <label htmlFor="name1">Enter Name 1:</label>
           <input
+            id="name1"
             type="text"
             value={name1}
             onChange={(e) => setName1(e.target.value)}
             placeholder="Enter Name 1"
           />
+          <label htmlFor="name2">Enter Name 2:</label>
           <input
+            id="name2"
             type="text"
             value={name2}
             onChange={(e) => setName2(e.target.value)}
@@ -58,8 +60,16 @@ const App = () => {
           />
           <button type="submit">Calculate Love Score</button>
         </form>
-      </div>
-    </div>
+        {loveScore !== null && (
+          <section aria-live="polite" className="result">
+            <p>The Love Score is: {loveScore}</p>
+          </section>
+        )}
+      </section>
+      <footer>
+        <p>Thank you for using our Love Score Calculator!</p>
+      </footer>
+    </main>
   );
 };
 
